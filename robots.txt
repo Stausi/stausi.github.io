@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://overextended.dev/
+Host: https://docs.stausi.com/
 
 # Sitemaps
-Sitemap: https://overextended.dev/sitemap.xml
+Sitemap: https://docs.stausi.com/sitemap.xml
