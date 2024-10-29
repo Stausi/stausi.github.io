@@ -1,4 +1,4 @@
-# Overextended Resources Documentation
+# Stausi Resources Docs
 
 ## Local Development
 
