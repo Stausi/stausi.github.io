@@ -1,0 +1,28 @@
+import ResourceLinks from '@components/resource-links';
+import { Steps, Tabs, Tab } from 'nextra-theme-docs';
+import { Callout } from 'nextra/components';
+
+# Minigames Script
+
+<ResourceLinks link="https://shop.stausi.com/package/6528185" />
+
+<Callout type="info">
+These exports only works client sided!
+</Callout>
+
+## StartDrilling
+
+Starts a drilling minigame using scaleforms
+
+Example of using this with synced function, with a return value
+
+```lua
+local hasWon = exports.st_minigames:StartDrilling()
+```
+
+Example of using this with asynced callback function
+
+```lua
+exports.st_minigames:StartDrilling(function(hasWon)
+end)
+```

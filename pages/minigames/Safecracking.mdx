@@ -1,0 +1,34 @@
+import ResourceLinks from '@components/resource-links';
+import { Steps, Tabs, Tab } from 'nextra-theme-docs';
+import { Callout } from 'nextra/components';
+
+# Minigames Script
+
+<ResourceLinks link="https://shop.stausi.com/package/6528185" />
+
+<Callout type="info">
+These exports only works client sided!
+</Callout>
+
+## SafeCrack
+
+Starts a safecrack minigame using Scaleforms
+
+Example of using this with synced function, with a return value
+
+```lua
+local hasWon = exports.st_minigames:SafeCrack(status, locks)
+```
+
+- status: `boolean` (If safecrack UI should be shown or not)
+- locks: `number` (How many locks the player should crach)
+
+Example of using this with asynced callback function
+
+```lua
+exports.st_minigames:SafeCrack(status, locks, function(hasWon)
+end)
+```
+
+- status: `boolean` (If safecrack UI should be shown or not)
+- locks: `number` (How many locks the player should crach)
