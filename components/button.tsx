@@ -64,3 +64,11 @@ export function NpmButton(props: Props) {
     </Button>
   );
 }
+
+export function ShopButton(props: Props) {
+  return (
+    <Button icon={<IconTag />} side={props.side} link={props.link}>
+      {props.label || "Shop"}
+    </Button>
+  );
+}
