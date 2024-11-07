@@ -54,7 +54,7 @@ const config: DocsThemeConfig = {
     link: 'https://github.com/Stausi/stausi.github.io',
   },
   chat: {
-    link: 'https://discord.gg/55hutHNg',
+    link: 'https://discord.gg/nKsErtYmek',
   },
   docsRepositoryBase: 'https://github.com/Stausi/stausi.github.io/blob/main',
   footer: {
