@@ -54,7 +54,7 @@ const config: DocsThemeConfig = {
     link: 'https://github.com/Stausi/stausi.github.io',
   },
   chat: {
-    link: 'https://frontierrp.dk/discord',
+    link: 'https://discord.gg/55hutHNg',
   },
   docsRepositoryBase: 'https://github.com/Stausi/stausi.github.io/blob/main',
   footer: {
