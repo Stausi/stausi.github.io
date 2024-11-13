@@ -34,7 +34,7 @@ These exports only works server sided!
         Returns the team from the Team UUID
 
         ```lua
-        local team = exports.st_steams:getTeamFromUUID(uuid)
+        local team = exports.st_teams:getTeamFromUUID(uuid)
         ```
 
         - uuid: `string`
@@ -45,7 +45,7 @@ These exports only works server sided!
         Returns the team from the source of a user
 
         ```lua
-        local team = exports.st_steams:getTeamFromSource(source)
+        local team = exports.st_teams:getTeamFromSource(source)
         ```
 
         - source: `number`
@@ -56,7 +56,7 @@ These exports only works server sided!
         Returns the team from the users identifier (steam)
 
         ```lua
-        local team = exports.st_steams:getTeamFromIdentifier(identifier)
+        local team = exports.st_teams:getTeamFromIdentifier(identifier)
         ```
 
         - identifier: `string`
@@ -69,7 +69,7 @@ These exports only works server sided!
 Makes the player leaves the team
 
 ```lua
-exports.st_steams:leaveTeam(source)
+exports.st_teams:leaveTeam(source)
 ```
 
 - source: `number`
@@ -79,7 +79,7 @@ exports.st_steams:leaveTeam(source)
 Makes the player leaves the team
 
 ```lua
-exports.st_steams:AddPlayerToTeam(source, target)
+exports.st_teams:AddPlayerToTeam(source, target)
 ```
 
 - source: `number` (The user which adds the player to the team)
@@ -90,7 +90,7 @@ exports.st_steams:AddPlayerToTeam(source, target)
 Returns if the user is in a team or not
 
 ```lua
-local isInTeam = exports.st_steams:IsPlayerInTeam(source)
+local isInTeam = exports.st_teams:IsPlayerInTeam(source)
 ```
 
 - source: `number`
@@ -100,7 +100,7 @@ local isInTeam = exports.st_steams:IsPlayerInTeam(source)
 Create a team for the user with custom generated name.
 
 ```lua
-local isInTeam = exports.st_steams:createTeam(source)
+local isInTeam = exports.st_teams:createTeam(source)
 ```
 
 - source: `number`
