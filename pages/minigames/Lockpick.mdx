@@ -32,3 +32,17 @@ end)
 
 - corrects: `number` (How many corrects the player must have)
 - timeMultiplier: `number` (How fast the arrow moves)
+
+
+## Example
+```lua
+local corrects = 2           
+local timeMultiplier = 2 
+exports.st_minigames:StartLockpickMinigame(corrects, timeMultiplier, function(hasWon)
+    if hasWon then
+        print("Lockpick successful!")
+    else
+        print("Lockpick failed!")
+    end
+end)
+```

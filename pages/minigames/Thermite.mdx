@@ -32,3 +32,17 @@ end)
 
 - mode: `number` (How many boxes which should be shown. Standard 5 which is 5x5=25 boxes)
 - time: `number` (Times in seconds to complete the minigame)
+
+
+## Example
+```lua
+local mode = 5      
+local time = 60     
+exports.st_minigames:StartThermiteMinigame(mode, time, function(hasWon)
+    if hasWon then
+        print("Thermite minigame successful!")
+    else
+        print("Thermite minigame failed!")
+    end
+end)
+```

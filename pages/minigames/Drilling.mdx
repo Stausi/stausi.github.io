@@ -26,3 +26,14 @@ Example of using this with asynced callback function
 exports.st_minigames:StartDrilling(function(hasWon)
 end)
 ```
+
+## Example
+```lua
+exports.st_minigames:StartDrilling(function(hasWon)
+    if hasWon then
+        print("Drilling successful!")
+    else
+        print("Drilling failed!")
+    end
+end)
+```
