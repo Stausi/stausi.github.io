@@ -46,3 +46,18 @@ end)
     - runes
 - timeout: `number` (Time in second when the minigame stops and make the user lose)
 - interval: `number` (Interval for each time the UI moves)
+
+
+## Example
+```lua
+local style = "numeric"   
+local timeout = 30        
+local interval = 1.5      
+exports.st_minigames:StartHackingMinigame(style, timeout, interval, function(hasWon)
+    if hasWon then
+        print("Hacking successful!")
+    else
+        print("Hacking failed!")
+    end
+end)
+```

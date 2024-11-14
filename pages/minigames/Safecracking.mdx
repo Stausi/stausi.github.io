@@ -32,3 +32,17 @@ end)
 
 - status: `boolean` (If safecrack UI should be shown or not)
 - locks: `number` (How many locks the player should crach)
+
+## Example
+
+```lua
+local status = true  
+local locks = 2    
+exports.st_minigames:SafeCrack(status, locks, function(hasWon)
+    if hasWon then
+        print("Safecrack successful!")
+    else
+        print("Safecrack failed!")
+    end
+end)
+```
