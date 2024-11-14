@@ -95,7 +95,6 @@ local isInTeam = exports.st_teams:IsPlayerInTeam(source)
 
 - source: `number`
 
-
 ## createTeam
 
 Creates a team for the user, with options for either a custom-specified team name or an automatically generated one.
@@ -105,9 +104,9 @@ local isInTeam = exports.st_teams:createTeam(source, name)
 ```
 
 - `source`: `number`
-- `name`: `string | false`
-  - Use a `string` to set a custom team name.
-  - Use `false` to generate a default name automatically.
+- `label`: `string | false`
+  - Provide a `string` to set a custom team name.
+  - If `false`, a default name will be generated in the format "Generated Name #1".
 
 ## Example
 
