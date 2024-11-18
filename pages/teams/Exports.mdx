@@ -100,7 +100,7 @@ local isInTeam = exports.st_teams:IsPlayerInTeam(source)
 Creates a team for the user, with options for either a custom-specified team name or an automatically generated one.
 
 ```lua
-local isInTeam = exports.st_teams:createTeam(source, name)
+local xTeam = exports.st_teams:createTeam(source, name)
 ```
 
 - `source`: `number`
@@ -113,12 +113,12 @@ local isInTeam = exports.st_teams:createTeam(source, name)
 With a custom-generated name:
 
 ```lua
-local RandomName = 'Random ' .. math.random(1,10)
-exports.st_teams:createTeam(source, RandomName, function(success)
-    if success then
-        print("Team created for player " .. source)
-    else
-        print("Failed to create team for player " .. source .. ". They may already be in a team.")
-    end
-end)
+local randomName = 'My Team Name'
+local xTeam = exports.st_teams:createTeam(source, RandomName)
+if not xTeam then
+    return
+end
+
+print("You have created a team!")
+
 ```
