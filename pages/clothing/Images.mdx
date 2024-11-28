@@ -1,0 +1,82 @@
+import ResourceLinks from '@components/resource-links';
+import { Steps, Tabs, Tab } from 'nextra-theme-docs';
+import { Callout } from 'nextra/components';
+
+# Clothing Script
+
+<ResourceLinks link="https://shop.stausi.com/package/6554614" />
+
+# Command Guide
+
+This guide provides detailed information on the available commands and their parameters.
+
+## Starting
+You can optain your own images by started the scripts `image-creator` and `image-creator-maps`.
+#### Please don't start these script on a production server.
+
+## Commands
+
+### **/screenshot**
+
+**Description:**
+Generate clothing screenshots.
+
+**Usage:**
+```
+/screenshot
+```
+
+---
+
+### **/customscreenshot**
+
+**Description:**
+Generate custom clothing screenshots.
+
+**Usage:**
+```
+/customscreenshot [component] [drawable/all] [props/clothing] [male/female/both] [camera settings]
+```
+
+**Parameters:**
+- **component**: The clothing component to take a screenshot of.
+- **drawable/all**: The drawable variation to take a screenshot of.
+- **props/clothing**: Specify whether it is props or clothing.
+- **male/female/both**: The gender to take a screenshot of.
+- **camera settings**: The camera settings to use for the screenshot (optional).
+
+---
+
+### **/screenshotobject**
+
+**Description:**
+Generate object screenshots.
+
+**Usage:**
+```
+/screenshotobject [object]
+```
+
+**Parameters:**
+- **object**: The object hash to take a screenshot of.
+
+---
+
+### **/screenshotvehicle**
+
+**Description:**
+Generate vehicle screenshots.
+
+**Usage:**
+```
+/screenshotvehicle [model/all] [primarycolor] [secondarycolor]
+```
+
+**Parameters:**
+- **model/all**: The vehicle model or 'all' to take a screenshot of all vehicles.
+- **primarycolor**: The primary vehicle color to take a screenshot of (optional). See: [Vehicle Colors](https://wiki.rage.mp/index.php?title=Vehicle_Colors).
+- **secondarycolor**: The secondary vehicle color to take a screenshot of (optional). See: [Vehicle Colors](https://wiki.rage.mp/index.php?title=Vehicle_Colors).
+
+---
+
+For additional help or questions, please refer to the documentation or contact support.
