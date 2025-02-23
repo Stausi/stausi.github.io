@@ -150,7 +150,7 @@ export default defineConfig({
   head: [
     [
       "link",
-      { rel: "icon", href: "https://raw.githubusercontent.com/Stausi/Documentation/main/docs/public/logo.svg" },
+      { rel: "icon", href: "https://raw.githubusercontent.com/Stausi/stausi.github.io/main/docs/public/logo.svg" },
     ],
   ],
   themeConfig: {
