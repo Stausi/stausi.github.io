@@ -22,18 +22,3 @@ To register an action, use the `registerAction()` function with the following pa
 1. **`string $hook_name`** – The name of the action hook.
 2. **`callable $callback`** – The function to be executed when the action is triggered.
 3. *(Optional)* **`int $priority`** – The execution priority (default: `10`).
-
-The example below will run when the `kd_stable:client:stableHorse` action is executed in *kd_stable* script with priority = 10.
-
-```lua
-function action_stable_horse()
-  -- Do something
-end
-exports.kd_stable:registerAction('kd_stable:client:stableHorse',action_stable_horse,10)
-```
-The `action_stable_horse` will be executed each time when the player stable his horse.
-
-You can refer to the script docs for a list of available hooks.
-
-As you gain more experience, looking through Open Source code will allow you to find the most appropriate hook.
-

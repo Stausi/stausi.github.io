@@ -24,18 +24,3 @@ To register a filter, use the `registerFilter()` function with the following par
 1. **`string $hook_name`** – The name of the filter hook.
 2. **`callable $callback`** – The function responsible for modifying the data.
 3. *(Optional)* **`int $priority`** – The execution priority (default: `10`).
-
-The example below will run when the `kd_stable:client:menuTitle` filter is executed in *kd_stable* script with a priority = 10.
-
-```lua
-function filter_menu_title(title)
-  return "The "..title.." was filtered"
-end
-exports.kd_stable:registerFilter('kd_stable:client:menuTitle',filter_menu_title,10)
-```
-Lets say we have a menu title, “My horses”, the above example will modify it to be “The My horses was filtered”.
-
-You can refer to the script docs for a list of available hooks.
-
-As you gain more experience, looking through Open Source code will allow you to find the most appropriate hook.
-
