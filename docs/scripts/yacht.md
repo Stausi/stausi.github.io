@@ -253,3 +253,30 @@ Config.AdditionalHandlers = {
     -- },
 }
 ```
+
+:::
+## 4. For developers
+
+### Actions
+
+[Actions](/DeveloperResources/actions) are the new way to modify how the script works or add new features. These actions are event that occurs at a specific point in time during the execution of the script. But contrary to events, actions are **synchronous**. 
+
+#### <Badge type="client" text="Client" /> startYachtHeist
+Fires when the yacht heist is started
+```lua
+exports.st_yachtheist:registerAction('startYachtHeist', function()
+end)
+```
+
+### Filters
+
+[Filters](/DeveloperResources/filters) are the new way to modify data used by the script. These filters are fired at a specific point in time during the execution of the script. But contrary to events, filters are **synchronous**. 
+
+#### <Badge type="client" text="Client" /> canStartYachtHeist
+Fires before the yacht heist is started
+```lua
+---@param canStart - boolean
+exports.st_yachtheist:registerFilter('canStartYachtHeist', function(canStart)
+	return canStart
+end)
+```
