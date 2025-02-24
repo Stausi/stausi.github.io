@@ -16,12 +16,6 @@ st.callback(name, delay, cb, ...)
 - cb: `function`
 - ...: `any`
 
-```lua
-st.callback('ox_inventory:getItemCount', false, function(count)
-    print(count)
-end, 'water', {type = 'fresh'})
-```
-
 ### st.callback.await
 
 The current coroutine is yielded until a response is received.
