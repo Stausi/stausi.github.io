@@ -24,3 +24,20 @@ To register a filter, use the `registerFilter()` function with the following par
 1. **`string $hook_name`** – The name of the filter hook.
 2. **`callable $callback`** – The function responsible for modifying the data.
 3. *(Optional)* **`int $priority`** – The execution priority (default: `10`).
+
+The example below will run when the `canStartYachtHeist` filter is executed in *st_yachtheist* script with a priority = 10.
+
+```lua
+function canStart()
+    if LocalPlayer.state.isPolice then
+        return false
+    end
+    return false
+end
+exports.st_yachtheist:registerFilter('canStartYachtHeist', canStart, 10)
+```
+This code will do, if the player has state bag isPolice they won't be able to start the yacht heist.
+
+You can refer to the script docs for a list of available hooks.
+
+As you gain more experience, looking through Open Source code will allow you to find the most appropriate hook.

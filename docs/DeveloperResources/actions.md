@@ -22,3 +22,17 @@ To register an action, use the `registerAction()` function with the following pa
 1. **`string $hook_name`** – The name of the action hook.
 2. **`callable $callback`** – The function to be executed when the action is triggered.
 3. *(Optional)* **`int $priority`** – The execution priority (default: `10`).
+
+The example below will run when the `startYachtHeist` action is executed in *st_yachtheist* script with priority = 10.
+
+```lua
+function action_heist_started()
+  -- Do something
+end
+exports.st_yachtheist:registerAction('startYachtHeist', action_heist_started, 10)
+```
+The `action_heist_started` will be executed each time a player start the yacht heist robbery
+
+You can refer to the script docs for a list of available hooks.
+
+As you gain more experience, looking through Open Source code will allow you to find the most appropriate hook.
