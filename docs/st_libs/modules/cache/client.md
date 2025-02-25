@@ -4,7 +4,7 @@ outline: [2,3]
 
 # Client
 
-Values and cache functionality available to the client, in addition to the [shared](../Shared) values.
+Values and cache functionality available to the client, in addition to the [shared](shared) values.
 
 ## Default values
 

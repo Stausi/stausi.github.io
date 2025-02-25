@@ -16,4 +16,4 @@ You can now use the library inside of your resource with the `cache.ped` global 
 ## Functions
 
 Documentation for the [Client](./client.md) side.  
-Documentation for the [Server](./server.md) side 
+Documentation for the [Shared](./shared.md) side 
