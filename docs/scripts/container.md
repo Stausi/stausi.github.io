@@ -33,26 +33,9 @@ Find containers which are spread around the map! Remember your tools, and open i
 ```lua
 Config = Config or {}
 
-Config.Framework = "esx"
-
---[[
-    Supported frameworks:
-        * esx: es_extended, https://github.com/esx-framework/esx-legacy
-        * qb: qb-core, https://github.com/qbcore-framework/qb-core
-]]
-
-Config.Inventory = "ox_inventory"
-
---[[
-    Supported frameworks:
-        * ox_inventory: https://github.com/overextended/ox_inventory
-        * qs-inventory: Quasar Inventory
-        * custom: Provide custom code in utils.lua
-]]
-
 -- Police Officers needed for doing action on Containers.
 
-Config.PoliceNeeded = 0
+Config.PoliceNeeded = 2
 
 -- Checking Police only on start 
 -- If this is true, it will only check police online on starting the heist.
@@ -75,6 +58,11 @@ Config.MaxDelay = 30
 -- This number cannot exceeds the number og elements in the array.
 
 Config.SpawnContainerAmount = 30
+
+-- If you want to use Stausi interaction menu for this script, set this to false.
+-- If you want to use your ox_target interaction menu, set this to true.
+
+Config.UseOxTarget = false
 
 -- This will enable or disable if police should be alerted.
 

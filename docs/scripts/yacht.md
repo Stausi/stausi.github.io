@@ -37,6 +37,12 @@ Find the NPC on that map, and start the heist! Be prepared and take some friend 
 
 :::details Config.lua
 ```lua
+Config = Config or {}
+
+Config.Devmode = false
+
+Config.Minutes = function(minutes) return minutes * 60 end
+Config.Hours = function(hours) return hours * (60 * 60) end
 Config.Days = function(days) return days * (24 * (60 * 60)) end
 
 -- Police Officers needed for doing action on Yacht Heist.
