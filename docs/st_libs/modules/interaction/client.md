@@ -22,14 +22,15 @@ st.create3DTextUIOnPlayer(id, options)
 
 `options` : *table*
 > `option` : *object*
->> `id` : *integer* - The unqiue id of the options  
+>> `id` : *integer* - The unique id of the options  
 >> `text` : *string* - The text which is shown when in interact distance  
 >> `displayDist` : *integer* - The distance before the pin marker is shown  
->> `interactDist` : *integer* - The distance before the interaction is shown  
 >> `interactDist` : *integer* - The distance before the interaction is shown  
 >> `key` : *string* - The display key for the interaction  
 >> `keyNum` : *integer* - The actual key listener the script will listen to.  
 >> `player` : *integer* - The player server id   
+>> `onSelect` : *function* - The function triggered when the interaction is selected  
+>> `canInteract` : *function* - A function returning a boolean to determine if the interaction is possible<BadgeOptional />
 
 #### Example
 ```lua
@@ -42,6 +43,12 @@ st.create3DTextUIOnPlayer("player1", {
         key = "E", 
         keyNum = 38,
         player = 1,
+        onSelect = function()
+            print("Player interacted with player!")
+        end,
+        canInteract = function()
+            return true
+        end,
     },
 })
 ```
@@ -60,11 +67,10 @@ st.update3DTextUIOnPlayer(id, optionId, data)
 `optionId` : *string*
 > The id of the option
 
-`option` : *object*
-> `id` : *integer* - The unqiue id of the options  
+`data` : *object*
+> `id` : *integer* - The unique id of the options  
 > `text` : *string* - The text which is shown when in interact distance  
 > `displayDist` : *integer* - The distance before the pin marker is shown  
-> `interactDist` : *integer* - The distance before the interaction is shown  
 > `interactDist` : *integer* - The distance before the interaction is shown  
 > `key` : *string* - The display key for the interaction  
 > `keyNum` : *integer* - The actual key listener the script will listen to.  
@@ -136,26 +142,33 @@ st.create3DTextUIOnCoords(id, options)
 
 `options` : *table*
 > `option` : *object*
->> `id` : *integer* - The unqiue id of the options  
+>> `id` : *integer* - The unique id of the options  
 >> `text` : *string* - The text which is shown when in interact distance  
 >> `displayDist` : *integer* - The distance before the pin marker is shown  
->> `interactDist` : *integer* - The distance before the interaction is shown  
 >> `interactDist` : *integer* - The distance before the interaction is shown  
 >> `key` : *string* - The display key for the interaction  
 >> `keyNum` : *integer* - The actual key listener the script will listen to.  
 >> `coords` : *vector3* - The coord where the interaction is located   
+>> `onSelect` : *function* - The function triggered when the interaction is selected  
+>> `canInteract` : *function* - A function returning a boolean to determine if the interaction is possible<BadgeOptional />    
 
 #### Example
 ```lua
 st.create3DTextUIOnCoords("coord1", {
-    { 
-        id = "greet", 
-        text = "Hello!", 
-        displayDist = 10.0, 
-        interactDist = 2.0, 
-        key = "E", 
+    {
+        id = "greet",
+        text = "Hello!",
+        displayDist = 10.0,
+        interactDist = 2.0,
+        key = "E",
         keyNum = 38,
         coords = vector3(0.0, 0.0, 0.0),
+        onSelect = function()
+            print("Player interacted with the location!")
+        end,
+        canInteract = function()
+            return true
+        end,
     },
 })
 ```
@@ -174,11 +187,10 @@ st.update3DTextUIOnCoords(id, optionId, data)
 `optionId` : *string*
 > The id of the option
 
-`option` : *object*
-> `id` : *integer* - The unqiue id of the options  
+`data` : *object*
+> `id` : *integer* - The unique id of the options  
 > `text` : *string* - The text which is shown when in interact distance  
 > `displayDist` : *integer* - The distance before the pin marker is shown  
-> `interactDist` : *integer* - The distance before the interaction is shown  
 > `interactDist` : *integer* - The distance before the interaction is shown  
 > `key` : *string* - The display key for the interaction  
 > `keyNum` : *integer* - The actual key listener the script will listen to.  
@@ -250,15 +262,16 @@ st.create3DTextUIOnEntity(id, options)
 
 `options` : *table*
 > `option` : *object*
->> `id` : *integer* - The unqiue id of the options  
+>> `id` : *integer* - The unique id of the options  
 >> `text` : *string* - The text which is shown when in interact distance  
 >> `displayDist` : *integer* - The distance before the pin marker is shown  
->> `interactDist` : *integer* - The distance before the interaction is shown  
->> `interactDist` : *integer* - The distance before the interaction is shown  
+>> `interactDist` : *integer* - The distance before the interaction is shown   
 >> `key` : *string* - The display key for the interaction  
 >> `keyNum` : *integer* - The actual key listener the script will listen to.  
 >> `entity` : *integer* - The entity id   
 >> `netId` : *integer* - The network id <BadgeOptional />  
+>> `onSelect` : *function* - The function triggered when the interaction is selected  
+>> `canInteract` : *function* - A function returning a boolean to determine if the interaction is possible<BadgeOptional />
 
 #### Example
 ```lua
@@ -271,6 +284,12 @@ st.create3DTextUIOnEntity("entity1", {
         key = "E", 
         keyNum = 38,
         entity = 252525,
+        onSelect = function()
+            print("Player interacted with entity!")
+        end,
+        canInteract = function()
+            return true
+        end,
     },
 })
 ```
@@ -289,12 +308,11 @@ st.update3DTextUIOnEntity(id, optionId, data)
 `optionId` : *string*
 > The id of the option
 
-`option` : *object*
-> `id` : *integer* - The unqiue id of the options  
+`data` : *object*
+> `id` : *integer* - The unique id of the options  
 > `text` : *string* - The text which is shown when in interact distance  
 > `displayDist` : *integer* - The distance before the pin marker is shown  
-> `interactDist` : *integer* - The distance before the interaction is shown  
-> `interactDist` : *integer* - The distance before the interaction is shown  
+> `interactDist` : *integer* - The distance before the interaction is shown   
 > `key` : *string* - The display key for the interaction  
 > `keyNum` : *integer* - The actual key listener the script will listen to.  
 > `entity` : *integer* - The entity id   
@@ -366,18 +384,19 @@ st.create3DTextUIOnModel(id, options)
 
 `options` : *table*
 > `option` : *object*
->> `id` : *integer* - The unqiue id of the options  
+>> `id` : *integer* - The unique id of the options  
 >> `text` : *string* - The text which is shown when in interact distance  
 >> `displayDist` : *integer* - The distance before the pin marker is shown  
->> `interactDist` : *integer* - The distance before the interaction is shown  
 >> `interactDist` : *integer* - The distance before the interaction is shown  
 >> `key` : *string* - The display key for the interaction  
 >> `keyNum` : *integer* - The actual key listener the script will listen to.  
 >> `model` : *string* - The model name  
+>> `onSelect` : *function* - The function triggered when the interaction is selected  
+>> `canInteract` : *function* - A function returning a boolean to determine if the interaction is possible<BadgeOptional />
 
 #### Example
 ```lua
-st.create3DTextUIOnEntity("model1", {
+st.create3DTextUIOnModel("model1", {
     { 
         id = "greet", 
         text = "Hello!", 
@@ -386,10 +405,16 @@ st.create3DTextUIOnEntity("model1", {
         key = "E", 
         keyNum = 38,
         model = "ch_prop_diamond_trolly_01b",
+        onSelect = function()
+            print("Player interacted with model!")
+        end,
+        canInteract = function()
+            return true
+        end,
     },
 })
 ```
-### st.update3DTextUIOnModel ()
+### st.update3DTextUIOnModel()
 Updates the 3D text UI attached to a model.
 
 #### Syntax
@@ -404,11 +429,10 @@ st.update3DTextUIOnModel(id, optionId, data)
 `optionId` : *string*
 > The id of the option
 
-`option` : *object*
-> `id` : *integer* - The unqiue id of the options  
+`data` : *object*
+> `id` : *integer* - The unique id of the options  
 > `text` : *string* - The text which is shown when in interact distance  
 > `displayDist` : *integer* - The distance before the pin marker is shown  
-> `interactDist` : *integer* - The distance before the interaction is shown  
 > `interactDist` : *integer* - The distance before the interaction is shown  
 > `key` : *string* - The display key for the interaction  
 > `keyNum` : *integer* - The actual key listener the script will listen to.  
