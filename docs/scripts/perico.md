@@ -323,3 +323,38 @@ Config.Categories = {
     },
 }
 ```
+
+:::
+## 4. For developers
+
+### Actions
+
+[Actions](/DeveloperResources/actions) are the new way to modify how the script works or add new features. These actions are event that occurs at a specific point in time during the execution of the script. But contrary to events, actions are **synchronous**. 
+
+#### <Badge type="client" text="Client" /> StartPericoHeist
+Fires when the perico heist is started
+```lua
+exports.st_perico_heist:registerAction('StartPericoHeist', function()
+end)
+```
+
+### Filters
+
+[Filters](/DeveloperResources/filters) are the new way to modify data used by the script. These filters are fired at a specific point in time during the execution of the script. But contrary to events, filters are **synchronous**. 
+
+#### <Badge type="client" text="Client" /> canStartPericoHeist
+Fires before the perico heist is started
+```lua
+---@param canStart - boolean
+exports.st_perico_heist:registerFilter('canStartPericoHeist', function(canStart)
+	return canStart
+end)
+```
+
+### Exports
+
+#### <Badge type="client" text="Client" /> Start the perico heist
+Export to start Perico Heist
+```lua
+exports['st_perico_heist']:StartHeist()
+```

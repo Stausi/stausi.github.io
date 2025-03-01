@@ -286,3 +286,11 @@ exports.st_yachtheist:registerFilter('canStartYachtHeist', function(canStart)
 	return canStart
 end)
 ```
+
+### Exports
+
+#### <Badge type="client" text="Client" /> Start the yacht heist
+Export to start Yacht Heist
+```lua
+exports['st_yachtheist']:StartHeist()
+```

@@ -481,3 +481,162 @@ Config.InitialPlayerClothes = {
     }
 }
 ```
+
+:::
+## 4. For developers
+
+### Exports
+
+#### <Badge type="client" text="Client" /> Opens the clothing menu
+Opens the clothing menu
+```lua
+exports['st_clothing']:OpenClothingMenu()
+```
+
+### Get Exports
+
+#### <Badge type="client" text="Client" /> Get the current ped model
+Get the current ped model
+```lua
+local model = exports['st_clothing']:getPedModel()
+```
+
+#### <Badge type="client" text="Client" /> Get the current ped components
+Get the current ped components
+```lua
+local components = exports['st_clothing']:getPedComponents()
+```
+
+#### <Badge type="client" text="Client" /> Get the current ped props
+Get the current ped props
+```lua
+local props = exports['st_clothing']:getPedProps()
+```
+
+#### <Badge type="client" text="Client" /> Get the current ped head blend
+Get the current ped head blend
+```lua
+local blend = exports['st_clothing']:getPedHeadBlend()
+```
+
+#### <Badge type="client" text="Client" /> Get the current ped face features
+Get the current ped face features
+```lua
+local features = exports['st_clothing']:getPedFaceFeatures()
+```
+
+#### <Badge type="client" text="Client" /> Get the current ped head overlays
+Get the current ped head overlays
+```lua
+local overlays = exports['st_clothing']:getPedHeadOverlays()
+```
+
+#### <Badge type="client" text="Client" /> Get the current ped hair
+Get the current ped hair
+```lua
+local hair = exports['st_clothing']:getPedHair()
+```
+
+#### <Badge type="client" text="Client" /> Get the current ped appearance
+Get the current ped appearance
+```lua
+local appearance = exports['st_clothing']:getPedAppearance()
+```
+
+### Set Exports
+
+#### <Badge type="client" text="Client" /> Set the current ped model
+Set the current ped model
+```lua
+---@param model = string : Define the ped model
+exports['st_clothing']:setPlayerModel(model)
+```
+
+#### <Badge type="client" text="Client" /> Set the current ped model
+Set the current ped model
+```lua
+---@param model = string : Define the ped model
+exports['st_clothing']:setPlayerModel(model)
+```
+
+#### <Badge type="client" text="Client" /> Set ped head blend
+Set the head blend of the ped
+```lua
+---@param blendData = table : Define the head blend data
+exports['st_clothing']:setPedHeadBlend(blendData)
+```
+
+#### <Badge type="client" text="Client" /> Set ped face features
+Set the face features of the ped
+```lua
+---@param features = table : Define the face features
+exports['st_clothing']:setPedFaceFeatures(features)
+```
+
+#### <Badge type="client" text="Client" /> Set ped head overlays
+Set the head overlays of the ped
+```lua
+---@param overlays = table : Define the head overlays
+exports['st_clothing']:setPedHeadOverlays(overlays)
+```
+
+#### <Badge type="client" text="Client" /> Set ped hair
+Set the hair style of the ped
+```lua
+---@param hairData = table : Define the hair style
+exports['st_clothing']:setPedHair(hairData)
+```
+
+#### <Badge type="client" text="Client" /> Set ped eye color
+Set the eye color of the ped
+```lua
+---@param eyeColor = number : Define the eye color ID
+exports['st_clothing']:setPedEyeColor(eyeColor)
+```
+
+#### <Badge type="client" text="Client" /> Set ped component
+Set a specific component of the ped
+```lua
+---@param componentId = number : Component ID
+---@param drawableId = number : Drawable ID
+---@param textureId = number : Texture ID
+---@param paletteId = number : Palette ID
+exports['st_clothing']:setPedComponent(componentId, drawableId, textureId, paletteId)
+```
+
+#### <Badge type="client" text="Client" /> Set ped components
+Set multiple components of the ped
+```lua
+---@param components = table : Define multiple components
+exports['st_clothing']:setPedComponents(components)
+```
+
+#### <Badge type="client" text="Client" /> Set ped prop
+Set a specific prop for the ped
+```lua
+---@param propId = number : Prop ID
+---@param drawableId = number : Drawable ID
+---@param textureId = number : Texture ID
+exports['st_clothing']:setPedProp(propId, drawableId, textureId)
+```
+
+#### <Badge type="client" text="Client" /> Set ped props
+Set multiple props for the ped
+```lua
+---@param props = table : Define multiple props
+exports['st_clothing']:setPedProps(props)
+```
+
+#### <Badge type="client" text="Client" /> Set player appearance
+Set the entire player appearance
+```lua
+---@param appearanceData = table : Define the full appearance data
+exports['st_clothing']:setPlayerAppearance(appearanceData)
+```
+
+#### <Badge type="client" text="Client" /> Set ped appearance
+Set the entire ped appearance
+```lua
+---@param appearanceData = table : Define the full appearance data
+exports['st_clothing']:setPedAppearance(appearanceData)
+```
