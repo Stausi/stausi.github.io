@@ -29,7 +29,8 @@ st.create3DTextUIOnPlayer(id, options)
 >> `key` : *string* - The display key for the interaction  
 >> `keyNum` : *integer* - The actual key listener the script will listen to.  
 >> `player` : *integer* - The player server id   
->> `onSelect` : *function* - The function triggered when the interaction is selected  
+>> `bone` : *string* - The bone of the entity<BadgeOptional />   
+>> `onSelect` : *function* - The function triggered when the interaction is selected   
 >> `canInteract` : *function* - A function returning a boolean to determine if the interaction is possible<BadgeOptional />
 
 #### Example
@@ -75,6 +76,7 @@ st.update3DTextUIOnPlayer(id, optionId, data)
 > `key` : *string* - The display key for the interaction  
 > `keyNum` : *integer* - The actual key listener the script will listen to.  
 > `player` : *integer* - The player server id   
+> `bone` : *string* - The bone of the entity<BadgeOptional />   
 
 #### Example
 ```lua
@@ -270,6 +272,7 @@ st.create3DTextUIOnEntity(id, options)
 >> `keyNum` : *integer* - The actual key listener the script will listen to.  
 >> `entity` : *integer* - The entity id   
 >> `netId` : *integer* - The network id <BadgeOptional />  
+>> `bone` : *string* - The bone of the entity<BadgeOptional />   
 >> `onSelect` : *function* - The function triggered when the interaction is selected  
 >> `canInteract` : *function* - A function returning a boolean to determine if the interaction is possible<BadgeOptional />
 
@@ -317,6 +320,7 @@ st.update3DTextUIOnEntity(id, optionId, data)
 > `keyNum` : *integer* - The actual key listener the script will listen to.  
 > `entity` : *integer* - The entity id   
 > `netId` : *integer* - The network id <BadgeOptional />  
+> `bone` : *string* - The bone of the entity<BadgeOptional />   
 
 #### Example
 ```lua
@@ -391,6 +395,7 @@ st.create3DTextUIOnModel(id, options)
 >> `key` : *string* - The display key for the interaction  
 >> `keyNum` : *integer* - The actual key listener the script will listen to.  
 >> `model` : *string* - The model name  
+>> `bone` : *string* - The bone of the entity<BadgeOptional />   
 >> `onSelect` : *function* - The function triggered when the interaction is selected  
 >> `canInteract` : *function* - A function returning a boolean to determine if the interaction is possible<BadgeOptional />
 
@@ -437,6 +442,7 @@ st.update3DTextUIOnModel(id, optionId, data)
 > `key` : *string* - The display key for the interaction  
 > `keyNum` : *integer* - The actual key listener the script will listen to.  
 > `model` : *string* - The model name  
+> `bone` : *string* - The bone of the entity<BadgeOptional />   
 
 #### Example
 ```lua
