@@ -1,8 +1,8 @@
-# Interaction
+# Entity Blips
 
-Interaction module is a module to interact with your database.
+The entity blips module is a way to add blips to entities which is persistent, even if you leave scope.
 
-## Include st_libs in your script
+## Include Interaction in your script
 
 1. To use the Interaction library, just add the initiator as a shared script inside of your `fxmanifest.lua` file.
 ```lua
