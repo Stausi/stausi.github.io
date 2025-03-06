@@ -14,4 +14,4 @@ You can now use the library inside of your resource the provided functions.
 
 ## Functions
 
-Documentation for the [Client](./client.md) side  
+Documentation for the [Server](./server.md) side  
