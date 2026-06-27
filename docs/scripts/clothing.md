@@ -640,3 +640,237 @@ Set the entire ped appearance
 ---@param appearanceData = table : Define the full appearance data
 exports['st_clothing']:setPedAppearance(appearanceData)
 ```
+
+## 5. Tattoo Shops
+
+### 5.1 Tattoo Shop Locations
+
+Tattoo shops are defined in `Config.TattooShops`. Each entry specifies a world position and optionally a blip on the map.
+
+:::details Config.TattooShops
+```lua
+Config.TattooShops = {
+    {
+        pos = vector3(322.73, 180.94, 103.58),
+        hasBlip = true,
+        name = "Inkhaus Tattoo"
+    },
+    -- Add more shops here
+}
+```
+:::
+
+### 5.2 Tattoo Chair Settings
+
+`Config.TattooSettings` controls the tattoo artist workflow. Each entry is keyed by a business name that corresponds to the `companyName` field.
+
+:::details Config.TattooSettings
+```lua
+Config.TattooSettings = {
+    ["vinewood_business"] = {
+        companyName = "inkhaus",
+        chairs = {
+            {
+                hasPlayerInChair = false,
+                -- Where the customer sits
+                coords = vector4(325.12, 183.33, 103.36, 295.15),
+                offset = vector3(0.1, 0.88, -0.6),
+                playerSource = 0,
+                isPlayerWorking = false,
+                -- The prop used as the artist's stool
+                workModel = "mxc_tattoo_prop_stool",
+                -- Where the artist stands/sits
+                workcoords = vector4(325.1, 184.32, 103.32, 271.47),
+                workoffset = vector3(0.2, -0.2, -0.6),
+                -- Minimum tattoos needed to unlock the job
+                workNeededTattoos = 0,
+            },
+        },
+    },
+}
+```
+:::
+
+| Field | Type | Description |
+|---|---|---|
+| `companyName` | `string` | Internal identifier matching the shop entry |
+| `coords` | `vector4` | Position and heading for the customer chair |
+| `offset` | `vector3` | Offset applied when seating the customer |
+| `workModel` | `string` | Prop spawned as the artist's seat |
+| `workcoords` | `vector4` | Position and heading for the artist |
+| `workoffset` | `vector3` | Offset applied when seating the artist |
+| `workNeededTattoos` | `number` | How many tattoos a worker must have applied to unlock the job |
+
+---
+
+### 5.3 rcore_tattoos Integration
+
+st_clothing supports loading custom tattoo lists from **rcore_tattoos**. When `rcore_tattoos` is running, st_clothing automatically pulls its tattoo lists at startup via an export.
+
+#### Step 1 — Add the export to rcore_tattoos
+
+Open `rcore_tattoos/config.lua` and add the following export **at the bottom of the file**:
+
+```lua
+exports('GetTattooList', function()
+    return Config.TattooLists
+end)
+```
+
+#### Step 2 — Define your tattoo list files
+
+In `rcore_tattoos/config.lua`, define `Config.TattooLists` as a table of file paths. Each path is relative to the `assets/tattooLists/` directory inside the rcore_tattoos resource.
+
+```lua
+Config.TattooLists = {
+    "custom_pack_01.json",
+    "custom_pack_02.json",
+}
+```
+
+#### Step 3 — JSON file format
+
+Each JSON file inside `rcore_tattoos/assets/tattooLists/` should follow this structure:
+
+```json
+{
+    "collection": "my_custom_pack",
+    "tattoos": [
+        {
+            "name": "Dragon Back",
+            "price": 500,
+            "zone": "ZONE_TORSO",
+            "hashMale": "mp_tat_m_dragon_back",
+            "hashFemale": "mp_tat_f_dragon_back"
+        }
+    ]
+}
+```
+
+| Field | Type | Description |
+|---|---|---|
+| `collection` | `string` | Unique identifier for the pack (used as a category label) |
+| `name` | `string` | Display name shown in the tattoo menu |
+| `price` | `number` | Cost of the tattoo (stripped from client-side data automatically) |
+| `zone` | `string` | Body zone — see zones table below |
+| `hashMale` | `string` | Game hash for male ped |
+| `hashFemale` | `string` | Game hash for female ped |
+
+**Available zones:**
+
+| Zone key | Description |
+|---|---|
+| `ZONE_HEAD` | Head |
+| `ZONE_TORSO` | Torso / chest / back |
+| `ZONE_LEFT_ARM` | Left arm |
+| `ZONE_RIGHT_ARM` | Right arm |
+| `ZONE_LEFT_LEG` | Left leg |
+| `ZONE_RIGHT_LEG` | Right leg |
+
+#### Step 4 — Ensure order in server.cfg
+
+Make sure `rcore_tattoos` is started **before** `st_clothing`:
+
+```
+ensure rcore_tattoos
+ensure st_clothing
+```
+
+::: tip
+Prices are automatically stripped from the data sent to clients — only the server holds the full price information.
+:::
+
+---
+
+## 6. CDN Setup
+
+By default st_clothing serves all clothing preview images directly from your FiveM server. For servers with many players this can cause noticeable load times. Using a CDN offloads image delivery to a dedicated file host, making the menu significantly faster.
+
+### 6.1 What is the CDN used for?
+
+The `Config.NewHud = true` clothing UI shows a **preview image** for every drawable in each category (components and props). Without a CDN these images are streamed from your server. With a CDN they are fetched from an external URL, reducing bandwidth on your game server.
+
+### 6.2 Generating the images
+
+The resource ships with a ready-made image capture tool inside `other_resources/image-creator`.
+
+#### Dependencies
+
+- [screenshot-basic](https://github.com/citizenfx/screenshot-basic) — must be started before the image-creator resource
+- Node.js + yarn
+
+#### Installation
+
+1. Rename the folder from `main-fivem-greenscreener` to `fivem-greenscreener`.
+2. Place it **directly** in your resources root (not inside a subfolder like `[scripts]`).
+3. Ensure `screenshot-basic` and `fivem-greenscreener` in your `server.cfg`.
+
+#### Running the capture
+
+1. Disable any dynamic weather/time scripts to get a clean background.
+2. Join your server and run `/screenshot` in chat.
+3. Wait for the process to finish — **do not move your mouse** while it runs.
+
+The script places all screenshots in the resource's output folder, using this naming convention:
+
+```
+{pedModel}_{componentId}_{drawableId}
+{pedModel}_prop_{propId}_{drawableId}
+```
+
+**Examples:**
+- `mp_m_freemode_01_11_5.png` — male ped, jacket (component 11), drawable 5
+- `mp_f_freemode_01_prop_0_3.png` — female ped, hat (prop 0), drawable 3
+
+#### Processing the images
+
+After capture, process the raw PNG screenshots:
+
+1. Use **[XnConvert](https://www.xnview.com/en/xnconvert/)** (or a similar batch processor) to:
+   - Remove the green screen background (chroma key / color replace → transparent)
+   - Convert to `.webp` for smaller file sizes
+
+> Keeping images as `.webp` is strongly recommended — it can reduce image sizes by 60–80 % compared to PNG.
+
+### 6.3 Hosting the images
+
+Upload the processed images to any static file host. Common options:
+
+| Provider | Notes |
+|---|---|
+| **Cloudflare R2** | Free tier, global CDN, S3-compatible |
+| **AWS S3 + CloudFront** | Reliable, pay-per-use |
+| **Cloudflare Pages** | Free static hosting, easy Git deployment |
+| **Bunny CDN** | Cheap bandwidth, easy to use |
+
+Organise your files so they are accessible at a stable base URL, e.g.:
+
+```
+https://cdn.example.com/clothing/mp_m_freemode_01_11_5.webp
+```
+
+### 6.4 Configuring the CDN URL
+
+Open `config.lua` and set `Config.CdnUrl` to the **base URL** of your image host — without a trailing slash:
+
+```lua
+-- Default (CDN disabled — images served from game server)
+Config.CdnUrl = "false"
+
+-- With CDN enabled
+Config.CdnUrl = "https://cdn.example.com/clothing"
+```
+
+When a CDN URL is set, st_clothing constructs image paths as:
+
+```
+{Config.CdnUrl}/{pedModel}_{componentId}_{drawableId}.webp
+```
+
+::: warning
+Make sure CORS is configured on your CDN/bucket to allow requests from your FiveM server domain, otherwise images may fail to load in the NUI.
+:::
+
+::: tip
+You can use **Cloudflare R2** with a custom domain entirely for free for most server sizes. Create a public bucket, upload your `.webp` images, and point `Config.CdnUrl` to your R2 public URL or custom domain.
+:::
